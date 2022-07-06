@@ -6,14 +6,13 @@ metadata:
 spec:
   containers:
     - name: myjenkins
-      image: jenkins/jenkins:lts-jdk11
+      image: jenkins/jenkins:latest
       ports:
         - containerPort: 8080
   initContainers:
     - name: init-app-service
       image: alpine:3
-      cmd: ["sleep", "10s"]
-  initContainers:
+      command: ["sleep", "20s"]
     - name: init-db-service
       image: alpine:3
-      cmd: ["sleep", "10s"]
+      command: ["sleep", "20s"]

@@ -4,7 +4,7 @@ kind: DaemonSet
 metadata:
   name: specificnodesds
   labels:
-    app:fluentd
+    app: fluentd
 spec:
   minReadySeconds: 5
   selector:

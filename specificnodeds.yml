@@ -21,4 +21,5 @@ spec:
           image: fluentd:latest
           ports:
             - containerPort: 24224
-      nodeName: app
+      nodeSelector:
+        name: app

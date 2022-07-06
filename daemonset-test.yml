@@ -19,5 +19,5 @@ spec:
       containers:
         - name: fluentd
           image: fluentd:lateset
-          port:
+          ports:
             - containerPort: 24224 

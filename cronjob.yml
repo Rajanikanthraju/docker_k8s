@@ -4,7 +4,7 @@ kind: CronJob
 metadata: 
   name: cronjobs
 spec:
-  schedule: */5 * * * *
+  schedule: "*/5 * * * *"
   jobTemplate:
     metadata:
       labels:

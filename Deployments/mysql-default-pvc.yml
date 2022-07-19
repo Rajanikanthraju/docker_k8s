@@ -5,8 +5,8 @@ metadata:
   name: azure-default-disk
 spec:
   accessModes:
-    - ReadWriteMany
-  storageClassName: ""
+    - ReadWriteOnce
+  storageClassName: managed
   resources:
     requests:
       storage: 1Gi

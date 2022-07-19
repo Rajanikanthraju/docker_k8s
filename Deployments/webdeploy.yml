@@ -6,7 +6,7 @@ metadata:
   labels:
     app: webapp
   annotations:
-    kubernetes.io/change-cause: "Updating to version 1.1"
+    kubernetes.io/change-cause: "Updating to version 1.2"
 spec:
   replicas: 5
   selector:
@@ -21,10 +21,10 @@ spec:
     metadata:
       labels:
         app: webapp
-        version: v1.1
+        version: v1.2
     spec:
       containers:
-        - image: httpd
+        - image: caddy
           name: webapptest
           readinessProbe:
             httpGet:

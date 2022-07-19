@@ -17,8 +17,9 @@ spec:
       maxUnavailable: 20%
   template:
     metadata:
-      app: webapp
-      version: v1.0
+      labels:
+        app: webapp
+        version: v1.0
     spec:
       containers:
         image: nginx

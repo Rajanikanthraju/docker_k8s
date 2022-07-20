@@ -19,10 +19,13 @@ spec:
         version: v1.0
     spec:
       containers:
-        - image: rajanikanthraju/openmrs:1.0
+        - image: practicek8s.jfrog.io/docker-practice-docker-local/openmrs:1.0
           name: openmrspvc
           ports:
             - containerPort: 8080
+      imagePullSecrets:
+        - name: artregcred
+        
 ---
 apiVersion: v1
 kind: Service

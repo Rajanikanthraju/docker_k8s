@@ -1,0 +1,63 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: azure-default-disk
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: managed
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openmrs-pvc
+  labels:
+    app: openmrspvc
+  annotations:
+    kubernetes.io/change-cause: "version 1.0"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: openmrspvc
+  template:
+    metadata:
+      labels:
+        app: openmrspvc
+        version: v1.0
+    spec:
+      containers:
+        - image: openmrs:1.0
+          name: openmrspvc
+          volumeMounts:
+            - name: openmrsmanaged
+              mountPath: /openmrs-core
+          ports:
+            - containerPort: 8080
+      volumes:
+        - name: openmrsmanaged
+          persistentVolumeClaim:
+            claimName: azure-default-disk
+---
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: openmrs-svc
+  labels:
+    job: lb
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+  selector:
+    app: openmrspvc
+  type: LoadBalancer
+
+
+              

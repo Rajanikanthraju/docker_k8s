@@ -32,7 +32,7 @@ spec:
         version: v1.0
     spec:
       containers:
-        - image: openmrs:1.0
+        - image: rajanikanthraju/openmrs:1.0
           name: openmrspvc
           volumeMounts:
             - name: openmrsmanaged
